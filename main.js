@@ -33,6 +33,7 @@ async function getItemTable(){
     for(item of itemTable.keys()){
         if (itemTable.get(item).price){
             itemTable.get(item).price = Math.round(itemTable.get(item).price)
+            print(item)
         }
     }
     /*
