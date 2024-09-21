@@ -137,6 +137,7 @@ async function findFlips(HIDE_FURNITURE, HIDE_PET_SKINS, HIDE_DUNGEON_ITEMS, HID
         var j = await response.json();
         j.auctions.forEach(auction => {
             console.log(auction)
+            console.log("five hundred cigarettes")
 
             if (!auction.bin) { }
             else if (auction["item_lore"].toLowerCase().includes("furniture") && HIDE_FURNITURE) { }
