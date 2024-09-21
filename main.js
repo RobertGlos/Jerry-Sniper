@@ -122,7 +122,7 @@ async function getItemTable(){
     */
     console.log(itemTable)
 }
-
+var sex = 0;
 async function findFlips(HIDE_FURNITURE, HIDE_PET_SKINS, HIDE_DUNGEON_ITEMS, HIDE_DRAGON_ITEMS, PROFITMIN, PERMIN, STOCKMIN, SORTTYPE, pages){
     //
 
@@ -136,9 +136,11 @@ async function findFlips(HIDE_FURNITURE, HIDE_PET_SKINS, HIDE_DUNGEON_ITEMS, HID
         var response = await fetch(`https://api.hypixel.net/skyblock/auctions?page=${i}`);
         var j = await response.json();
         j.auctions.forEach(auction => {
-            console.log(auction)
-            console.log("five hundred cigarettes")
-
+            if(sex == 30){
+                console.log(auction)
+                console.log("five hundred cigarettes")
+                sex++;
+            }
             if (!auction.bin) { }
             else if (auction["item_lore"].toLowerCase().includes("furniture") && HIDE_FURNITURE) { }
             else if (auction["item_lore"].toLowerCase().includes("pet skin") && HIDE_PET_SKINS) { }
