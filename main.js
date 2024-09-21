@@ -120,7 +120,6 @@ async function getItemTable(){
     }
     await Promise.all(promises)
     */
-    console.log(itemTable)
 }
 var sex = 0;
 async function findFlips(HIDE_FURNITURE, HIDE_PET_SKINS, HIDE_DUNGEON_ITEMS, HIDE_DRAGON_ITEMS, PROFITMIN, PERMIN, STOCKMIN, SORTTYPE, pages){
@@ -180,7 +179,6 @@ async function findFlips(HIDE_FURNITURE, HIDE_PET_SKINS, HIDE_DUNGEON_ITEMS, HID
                 items.get(real_name).push(new ahInfo(auction["starting_bid"], auction.uuid, auction["item_name"], auction['tier'], b_real))
             }
         });
-        console.log("Page loaded", i)
         resolve()
     }))
     }
@@ -188,7 +186,6 @@ async function findFlips(HIDE_FURNITURE, HIDE_PET_SKINS, HIDE_DUNGEON_ITEMS, HID
     STATUS.innerText = "Calculating Flips...";
     profitable_flips = []
     promises = []
-    console.log(items.size)
     items.forEach (async (item, name) => {
         promises.push(
             new Promise( (resolve, reject) => {
@@ -223,7 +220,6 @@ async function findFlips(HIDE_FURNITURE, HIDE_PET_SKINS, HIDE_DUNGEON_ITEMS, HID
     await Promise.all(promises)
 
     CONTAINER.innerHTML = "";
-    console.log(profitable_flips.length)
     profitable_flips.sort((a, b) => {if (SORTTYPE == "profit"){return b.profit - a.profit}if (SORTTYPE == "margin"){return b.percent - a.percent}else {var textA = a.info.name.toUpperCase();var textB = b.info.name.toUpperCase();return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}})
     for (flip of profitable_flips){
         flip.createWidget();
@@ -266,7 +262,6 @@ async function main(){
     setInterval(async () => {
         let resp = await fetch(API)
         let json = await resp.json()
-        console.log(json.lastUpdated != last, document.getElementById("toggle-button").checked, json.lastUpdated, last, "RELOADING")
         if (json.lastUpdated != last && document.getElementById("toggle-button").checked){
             last = json.lastUpdated;
             pages = json.totalPages;
