@@ -26,6 +26,8 @@ async function getItemTable(){
     
 
     var resp = await fetch(CUSTOMITEMSAPI);
+    var resp2 = await fetch(ITEMSAPI);
+    console.log(resp2)
     var json = await resp.json()
     for(item of Object.keys(json)) {
         itemTable.set(item, json[item]);
