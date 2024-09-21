@@ -135,7 +135,7 @@ async function findFlips(HIDE_FURNITURE, HIDE_PET_SKINS, HIDE_DUNGEON_ITEMS, HID
         var response = await fetch(`https://api.hypixel.net/skyblock/auctions?page=${i}`);
         var j = await response.json();
         j.auctions.forEach(auction => {
-            if(sex < 30 && auction["item_name"].includes("Divan") && !(auction["item_name"].includes("Jaded")) && (auction["item_name"].includes("Chestplate") || auction["item_name"].includes("Boots") || auction["item_name"].includes("Leggings") || auction["item_name"].includes("Helmet")) ){
+            if(sex < 30 && auction["item_name"].includes("Divan") && !(auction["item_name"].includes("Jaded")) && (auction["item_name"].includes("Chestplate") || auction["item_name"].includes("Boots") || auction["item_name"].includes("Leggings") || auction["item_name"].includes("Helmet")) && !(auction["item_lore"].includes("§8⸕§8")) && !(auction["item_lore"].includes("§8⸕§8")) && !(auction["item_lore"].includes("§8✧§8")) && !(auction["item_lore"].includes("§8⸕§8")) && !(auction["item_lore"].includes("§8☘§8")) && auction["starting_bid"]<42000000){
                 console.log(auction)
                 console.log("five hundred cigarettes")
                 sex++;
